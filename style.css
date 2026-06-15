@@ -189,14 +189,17 @@ img {
     max-width: 400px;
     height: 400px;
     transform-style: preserve-3d;
-    animation: spin 16s linear infinite;
     cursor: pointer;
     filter: drop-shadow(0 20px 40px rgba(255, 20, 147, 0.3));
     transition: all 0.3s ease;
+    perspective: 1200px;
+}
+
+.container2:hover span {
+    animation-play-state: paused;
 }
 
 .container2:hover {
-    animation-play-state: paused;
     filter: drop-shadow(0 30px 60px rgba(255, 20, 147, 0.5));
 }
 
@@ -208,6 +211,7 @@ img {
     height: 100%;
     transform-style: preserve-3d;
     transform-origin: center;
+    animation: spin 20s linear infinite;
 }
 
 .container2 span img {
@@ -222,10 +226,10 @@ img {
 
 @keyframes spin {
     0% {
-        transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
+        transform: rotateY(0deg);
     }
     100% {
-        transform: perspective(1200px) rotateY(360deg) rotateX(0deg);
+        transform: rotateY(360deg);
     }
 }
 
