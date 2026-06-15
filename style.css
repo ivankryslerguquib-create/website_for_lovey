@@ -21,6 +21,10 @@ section {
     text-align: center;
     background-color: var(--primary-pink);
     padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 nav a {
@@ -29,21 +33,31 @@ nav a {
     font-size: 15px;
     margin: 0 20px;
     transition: all 0.3s ease-in-out;
+    display: inline-block;
 }
 
 .menu nav a:hover {
-    color: var(--primary-pink);
-    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-white);
+    background-color: rgba(255, 255, 255, 0.25);
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 8px 12px;
+    transform: translateY(-2px);
+}
+
+.home {
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.3) 0%, rgba(255, 20, 147, 0.1) 100%);
+    padding: 4rem 2rem;
 }
 
 h1 {
     color: var(--text-white);
-    font-size: 2rem;
+    font-size: 4rem;
     text-align: center;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 h2 {
@@ -78,6 +92,7 @@ h4 {
     font-family: 'Times New Roman', Times, serif;
     text-align: justify;
     line-height: 1.6;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .home3 {
@@ -86,6 +101,24 @@ h4 {
     font-size: 1.3rem;
     margin: 10px;
     padding: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.timeline {
+    background: rgba(255, 20, 147, 0.1);
+    border-left: 4px solid var(--primary-pink);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
 }
 
 .timeline ul {
@@ -94,11 +127,19 @@ h4 {
 }
 
 .timeline li {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
+    margin: 1rem 0;
+    padding: 1rem;
     text-align: left;
     font-style: italic;
     color: var(--text-blue);
+    background: rgba(255, 20, 147, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.timeline li:hover {
+    background: rgba(255, 20, 147, 0.15);
+    transform: translateX(5px);
 }
 
 .container {
@@ -120,8 +161,13 @@ img {
 }
 
 .image {
-    transition: 0.5s ease;
+    transition: all 0.5s ease;
     cursor: pointer;
+    position: relative;
+}
+
+.image:hover {
+    transform: scale(1.08) translateY(-5px);
 }
 
 .container:hover > :not(:hover) {
@@ -134,53 +180,69 @@ img {
     align-items: center;
     min-height: 100vh;
     padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.1) 0%, rgba(120, 73, 95, 0.1) 100%);
 }
 
 .container2 {
     position: relative;
     width: 90%;
-    max-width: 300px;
-    height: 300px;
+    max-width: 400px;
+    height: 400px;
     transform-style: preserve-3d;
-    animation: spin 18s linear infinite;
+    animation: spin 16s linear infinite;
     cursor: pointer;
+    filter: drop-shadow(0 20px 40px rgba(255, 20, 147, 0.3));
+    transition: all 0.3s ease;
+}
+
+.container2:hover {
+    animation-play-state: paused;
+    filter: drop-shadow(0 30px 60px rgba(255, 20, 147, 0.5));
 }
 
 .container2 span {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
     transform-origin: center;
 }
 
 .container2 span img {
     position: absolute;
-    width: 30%;
+    width: 35%;
     height: auto;
-    transform: translate(-50%, -50%) rotateY(calc(var(--i) * 45deg)) translateZ(120px);
-    border-radius: 10px;
-    border: 6px ridge #ccc;
+    transform: translate(-50%, -50%) rotateY(calc(var(--i) * 45deg)) translateZ(150px);
+    border-radius: 12px;
+    border: 6px solid var(--primary-pink);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes spin {
     0% {
-        transform: perspective(1000px) rotateY(0deg);
+        transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
     }
     100% {
-        transform: perspective(1000px) rotateY(360deg);
+        transform: perspective(1200px) rotateY(360deg) rotateX(0deg);
     }
 }
 
+.section-heading {
+    padding: 1.5rem;
+}
+
 .letter {
-    background: var(--primary-pink);
+    background: linear-gradient(135deg, var(--primary-pink) 0%, rgba(255, 20, 147, 0.8) 100%);
     color: var(--text-white);
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 3rem;
+    border-radius: 16px;
     max-width: 90%;
     margin: 2rem auto;
     font-size: 1.1rem;
     line-height: 1.8;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .responsive-image {
@@ -203,7 +265,8 @@ body {
 /* Mobile adjustments */
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
+        padding: 15px;
     }
 
     h2 {
@@ -212,6 +275,10 @@ body {
 
     h3, h4 {
         font-size: 1.1rem;
+    }
+
+    .home {
+        padding: 2rem 1rem;
     }
 
     .home2 {
@@ -235,13 +302,17 @@ body {
     }
 
     .container2 {
-        max-width: 250px;
-        height: 250px;
+        max-width: 300px;
+        height: 300px;
+    }
+
+    .container2 span img {
+        transform: translate(-50%, -50%) rotateY(calc(var(--i) * 45deg)) translateZ(120px);
     }
 
     .letter {
         max-width: 95%;
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
         font-size: 1rem;
     }
 
@@ -252,8 +323,8 @@ body {
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.2rem;
-        padding: 5px;
+        font-size: 1.8rem;
+        padding: 10px;
     }
 
     h2, h3 {
@@ -275,6 +346,10 @@ body {
         font-size: 12px;
     }
 
+    .home {
+        padding: 1.5rem 1rem;
+    }
+
     .home2 {
         padding: 1rem;
         margin: 0.5rem;
@@ -294,6 +369,11 @@ body {
         max-width: 120px;
     }
 
+    .picture {
+        min-height: auto;
+        padding: 1rem;
+    }
+
     .container2 {
         max-width: 200px;
         height: 200px;
@@ -301,7 +381,8 @@ body {
 
     .container2 span img {
         width: 40%;
-        transform: translate(-50%, -50%) rotateY(calc(var(--i) * 45deg)) translateZ(100px);
+        transform: translate(-50%, -50%) rotateY(calc(var(--i) * 45deg)) translateZ(80px);
+        border: 4px solid var(--primary-pink);
     }
 
     .letter {
